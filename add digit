@@ -1,0 +1,14 @@
+class Solution:
+    def addDigits(self, num: int) -> int:
+        if num ==0:
+            return 0
+        else:
+            while num>=10:
+                digit_sum = 0
+                for digit in str(num):
+                    digit_sum += int(digit)
+                num = digit_sum 
+            return num
+sol =Solution()
+n = int(input("enter the number:"))
+print(sol.addDigits(n))
