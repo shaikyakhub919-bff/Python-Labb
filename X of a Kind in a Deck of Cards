@@ -1,0 +1,14 @@
+class Solution:
+		def hasGroupsSizeX(self, deck: List[int]) -> bool:
+			# Count frequency of each card
+			count = Counter(deck)
+			
+			# Find the GCD of all frequencies
+			frequencies = list(count.values())
+			
+			# Calculate GCD of all frequencies
+			overall_gcd = reduce(gcd, frequencies)
+			
+			# Return true if GCD >= 2
+			return overall_gcd >= 2		
+
