@@ -1,0 +1,11 @@
+class Solution:
+		def constructRectangle(self, area: int) -> List[int]:
+			width = int(area ** 0.5)
+		
+			while width > 0:
+				if area % width == 0:
+					length = area // width
+					return [length, width]
+				width -= 1
+			
+			return [area, 1]  # Fallback, though the loop should always find a solutio
