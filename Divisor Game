@@ -1,0 +1,4 @@
+class Solution:
+		def divisorGame(self, n: int) -> bool:
+			# Alice wins if n is even, loses if n is odd
+			return n % 2 == 0
