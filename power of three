@@ -1,0 +1,11 @@
+class Solution:
+		def isPowerOfThree(self, n: int) -> bool:
+			if n <= 0:
+				return False
+		
+			# Keep dividing by 3 until we can't
+			while n % 3 == 0:
+				n //= 3
+			
+			# If we end up with 1, it was a power of three
+			return n == 1
