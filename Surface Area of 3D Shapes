@@ -1,0 +1,38 @@
+class Solution:
+		def surfaceArea(self, grid: List[List[int]]) -> int:
+			n = len(grid)
+			total_area = 0
+			
+			for i in range(n):
+				for j in range(n):
+					if grid[i][j] > 0:
+						# Top and bottom faces
+						total_area += 2
+						
+						# Check four neighbors (up, down, left, right)
+						# For each direction, add exposed surface area
+						# Up
+						if i > 0:
+							total_area += max(0, grid[i][j] - grid[i-1][j])
+						else:
+							total_area += grid[i][j]
+						
+						# Down
+						if i < n - 1:
+							total_area += max(0, grid[i][j] - grid[i+1][j])
+						else:
+							total_area += grid[i][j]
+						
+						# Left
+						if j > 0:
+							total_area += max(0, grid[i][j] - grid[i][j-1])
+						else:
+							total_area += grid[i][j]
+						
+						# Right
+						if j < n - 1:
+							total_area += max(0, grid[i][j] - grid[i][j+1])
+						else:
+							total_area += grid[i][j]
+			
+			return total_area
