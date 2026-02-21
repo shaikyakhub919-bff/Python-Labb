@@ -1,0 +1,13 @@
+class Solution:
+		def countPrimeSetBits(self, left: int, right: int) -> int:
+			# Prime numbers up to 20 (since numbers up to 10^6 have at most 20 bits)
+			primes = {2, 3, 5, 7, 11, 13, 17, 19}
+			
+			count = 0
+			for num in range(left, right + 1):
+				# Count set bits using bin(num).count('1') or bit manipulation
+				set_bits = bin(num).count('1')
+				if set_bits in primes:
+					count += 1
+			
+			return count
