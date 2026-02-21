@@ -1,0 +1,21 @@
+class Solution:
+		def addToArrayForm(self, num: List[int], k: int) -> List[int]:
+			# Convert num to an integer and add k
+			# But to avoid overflow issues, we'll do digit-by-digit addition
+			
+			result = []
+			carry = k
+			
+			# Process from rightmost digit
+			for i in range(len(num) - 1, -1, -1):
+				carry += num[i]
+				result.append(carry % 10)
+				carry //= 10
+			
+			# Handle remaining carry
+			while carry > 0:
+				result.append(carry % 10)
+				carry //= 10
+			
+			# Reverse to get correct order
+			return result[::-1]
