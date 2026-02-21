@@ -1,0 +1,21 @@
+class Solution:
+    def toHex(self, num: int) -> str:
+        if num == 0:
+            return "0"
+        
+        # 1. Standardize to 32-bit unsigned (Two's Complement)
+        # Using mask is more idiomatic than an 'if' check
+        num &= 0xFFFFFFFF
+        
+        hex_chars = "0123456789abcdef"
+        result = []
+        
+        while num > 0:
+            # 2. Get the last 4 bits
+            digit = num & 0xF
+            result.append(hex_chars[digit])
+            num >>= 4
+        
+        # 3. Join and reverse 
+        # (Appending to a list and joining is faster than string concatenation in a loop)
+        return "".join(result[::-1])
