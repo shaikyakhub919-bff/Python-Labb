@@ -1,0 +1,9 @@
+class Solution:
+		def maximumProduct(self, nums: List[int]) -> int:
+			nums.sort()
+			
+			# Two possibilities for max product:
+			# 1. Three largest numbers (all positive or all negative)
+			# 2. Two smallest (most negative) and the largest positive
+			return max(nums[-1] * nums[-2] * nums[-3], nums[0] * nums[1] * nums[-1])
+
