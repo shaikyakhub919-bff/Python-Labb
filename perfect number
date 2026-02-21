@@ -1,0 +1,19 @@
+class Solution:
+    def checkPerfectNumber(self, num: int) -> bool:
+        # 1. Edge case: numbers <= 1 cannot be perfect
+        if num <= 1:
+            return False
+    
+        divisor_sum = 1  # 1 is always a divisor (excluding num itself)
+        
+        # 2. Optimization: Only check up to the square root
+        # If 'i' is a divisor, then 'num // i' is also a divisor.
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                divisor_sum += i
+                # Ensure we don't add the square root twice (e.g., 6*6 for 36)
+                if i * i != num:
+                    divisor_sum += num // i
+                    
+        # 3. Final Check: Does the sum of divisors equal the number?
+        return divisor_sum == num
