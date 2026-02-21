@@ -1,0 +1,26 @@
+class Solution:
+		def projectionArea(self, grid: List[List[int]]) -> int:
+			n = len(grid)
+			
+			# xy-plane: count cells with cubes (v > 0)
+			xy_area = 0
+			for i in range(n):
+				for j in range(n):
+					if grid[i][j] > 0:
+						xy_area += 1
+			
+			# yz-plane: max in each row (looking from front/back)
+			yz_area = 0
+			for i in range(n):
+				yz_area += max(grid[i])
+			
+			# zx-plane: max in each column (looking from side)
+			zx_area = 0
+			for j in range(n):
+				col_max = 0
+				for i in range(n):
+					col_max = max(col_max, grid[i][j])
+				zx_area += col_max
+			
+			return xy_area + yz_area + zx_area
+ Projection Area of 3D Shapes
