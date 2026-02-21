@@ -1,0 +1,13 @@
+class Solution:
+		def largestPerimeter(self, nums: List[int]) -> int:
+			# Sort in descending order
+			nums.sort(reverse=True)
+			
+			# Check consecutive triplets
+			for i in range(len(nums) - 2):
+				# For a valid triangle: sum of two smaller sides > largest side
+				# Since array is sorted descending, nums[i] is largest among the three
+				if nums[i] < nums[i+1] + nums[i+2]:
+					return nums[i] + nums[i+1] + nums[i+2]
+			
+			return 0
